@@ -23,9 +23,9 @@ jobs:
     - name: Set up Kaniko
       uses: gcr.io/kaniko-project/executor:latest
       
-    # - name: Build Docker image
-    #   run: |
-    #     /kaniko/executor \
-    #       --context $(pwd)/numbers_api \
-    #       --dockerfile numbers_api/Dockerfile \
-    #       --destination ttl.sh/moon
+    - name: Build Docker image
+      run: |
+        /kaniko/executor \
+          --context $(pwd)/numbers_api \
+          --dockerfile numbers_api/Dockerfile \
+          --destination ttl.sh/moon
