@@ -1,0 +1,28 @@
+name: Build Docker Image with Kaniko
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: alpine-latest
+    
+    steps:
+    - name: test
+      run: |
+        ls -la
+      
+    # - name: Set up Kaniko
+    #   uses: gcr.io/kaniko-project/executor:latest
+      
+    # - name: Build Docker image
+    #   run: |
+    #     /kaniko/executor \
+    #       --context $(pwd)/numbers_api \
+    #       --dockerfile numbers_api/Dockerfile \
+    #       --destination ttl.sh/moon
