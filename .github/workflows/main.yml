@@ -8,24 +8,23 @@ on:
     branches:
       - main
 
-jobs:
+obs:
   build:
-    runs-on: ubuntu-latest
-    
-    # steps:
-    # - name: Checkout repository
-    #   uses: actions/checkout@v4
-    
-    # - name: ls
-    #   run: |
-    #     ls -la
-      
-    - name: Set up Kaniko
-      uses: gcr.io/kaniko-project/executor:latest
-      
-    - name: Build Docker image
-      run: |
-        /kaniko/executor \
-          --context $(pwd)/numbers_api \
-          --dockerfile numbers_api/Dockerfile \
-          --destination ttl.sh/moon
+    steps:
+      - uses: actions/checkout@v3
+      - uses: docker/metadata-action@v4
+        id: metadata
+        with:
+          images: ghcr.io/${{ github.repository }}
+      - uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: int128/kaniko-action@v1
+        with:
+          push: true
+          tags: ${{ steps.metadata.outputs.tags }}
+          labels: ${{ steps.metadata.outputs.labels }}
+          cache: true
+          cache-repository: ghcr.io/${{ github.repository }}/cache
