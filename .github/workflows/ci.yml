@@ -4,9 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       msName:
-        description: 'Name of microservice to deploy'
-        required: true
-        type: string
+        type: choice
+        description: microservice to deploy
+        options: 
+        - odd
+        - even
 
 jobs:
   build:
