@@ -19,7 +19,7 @@ check_even_odd_within_range() {
         error=true
     fi
 
-    if [ "$response" -gt "$lower" ] && [ "$response" -lt "$upper" ]; then
+    if [ "$response" -ge "$lower" ] && [ "$response" -le "$upper" ]; then
         within_range="within"
     else
         within_range="outside of"
