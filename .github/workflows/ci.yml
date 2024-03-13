@@ -54,6 +54,8 @@ jobs:
         uses: azure/setup-helm@v3
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.6.0
+        with:
+          charts_dir: microservices/charts
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
       
