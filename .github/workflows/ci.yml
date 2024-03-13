@@ -82,7 +82,7 @@ jobs:
               -f get-url/configs/${{ github.event.inputs.msName }}.yaml \
               --set image.tag=${{needs.build.outputs.imageTag}} \
               --set fullnameOverride=${{ github.event.inputs.msName }}
-              rm -f $temp_folder
+              rm -rf $temp_folder
               '
   tests:
     needs: [deploy]
