@@ -107,4 +107,4 @@ tolerations: []
 affinity: {}
 
 envVariables:
-  API_URL: "http://10.100.154.252/odd"
+  API_URL: "http://api/odd"
