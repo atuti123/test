@@ -8,7 +8,7 @@ image:
   repository: ttl.sh/api-multi
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: v3
+  tag: v4
 
 imagePullSecrets: []
 nameOverride: ""

@@ -75,7 +75,7 @@ jobs:
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
               helm repo add roy https://royta1.github.io/test
-              sleep 20 # make sure repo is updated with latest release before we pull
+              rm -rf ~/.cache/helm
               helm repo update
               temp_folder=$(mktemp -d) && cd $temp_folder
               helm pull roy/get-url --untar
