@@ -37,8 +37,21 @@ jobs:
       - id: imageTag
         run: echo "tag=${{ github.ref_name }}.${{ github.sha }}" >> "$GITHUB_OUTPUT"
 
+  paths-filter:
+    runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.filter.outputs.charts }}
+    steps:
+    - uses: dorny/paths-filter@v2
+      id: filter
+      with:
+        filters: |
+          charts:
+            - '/microservices/charts/**'
+  
   release:
-    needs: build
+    needs: [build, paths-filter]
+    if: needs.paths-filter.outputs.output1 == 'true'
     permissions:
       contents: write
     runs-on: ubuntu-latest
@@ -85,6 +98,7 @@ jobs:
               --set fullnameOverride=${{ github.event.inputs.msName }}
               rm -rf $temp_folder
               '
+  
   tests:
     needs: [deploy]
     runs-on: ubuntu-latest
