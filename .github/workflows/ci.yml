@@ -35,7 +35,7 @@ jobs:
           push: true
           tags: ttl.sh/ms:${{ github.ref_name }}.${{ github.sha }}
       - id: imageTag
-        run: echo "tag=ttl.sh/ms:${{ github.ref_name }}.${{ github.sha }}" >> "$GITHUB_OUTPUT"
+        run: echo "tag=${{ github.ref_name }}.${{ github.sha }}" >> "$GITHUB_OUTPUT"
 
   release:
     needs: build
