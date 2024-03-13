@@ -1,4 +1,4 @@
-name: ci
+name: build-and-deploy
 
 on:
   workflow_dispatch:
@@ -15,7 +15,7 @@ jobs:
       
       - name: variable
         run: |
-           echo ${{ github.event.inputs.msName }}"
+           echo "${{ github.event.inputs.msName }}"
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up QEMU
