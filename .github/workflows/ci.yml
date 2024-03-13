@@ -53,7 +53,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
               chart_path=/home/ubuntu/git/test/microservices/charts/get-url
               helm upgrade -i ${{ github.event.inputs.msName }} $chart_path \
-              -f $chart_path \
+              -f $chart_path\configs/${{ github.event.inputs.msName }}.yaml \
               --set image.tag=${{needs.build.outputs.imageTag}} \
               --set fullnameOverride=${{ github.event.inputs.msName }}       
               '
