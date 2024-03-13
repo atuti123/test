@@ -9,7 +9,7 @@ on:
         description: microservice to deploy
         options: 
         - odd
-        - even
+        - even~
 
 jobs:
   build:
@@ -85,6 +85,7 @@ jobs:
               rm -f $temp_folder
               '
   tests:
+    needs: [deploy]
     runs-on: ubuntu-latest
 
     steps:
