@@ -12,4 +12,4 @@ def random_even():
     return random.choice([num for num in range(1, 100) if num % 2 == 0])
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=80)
+    uvicorn.run(app, host="0.0.0.0", port=80)
