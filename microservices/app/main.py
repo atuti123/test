@@ -24,5 +24,9 @@ def get_api_response():
     except requests.exceptions.RequestException as e:
         raise HTTPException(status_code=500, detail=f"Error fetching data from API: {str(e)}")
 
+@app.get("/ready")
+def check_ready():
+    return JSONResponse(content={"status": "OK"}, status_code=200)
+
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=80)
