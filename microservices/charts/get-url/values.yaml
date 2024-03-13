@@ -109,3 +109,6 @@ affinity: {}
 # assuming http be default if scheme not specified
 envVariables:
   API_URL: "www.google.com"
+
+reloader:
+  enabled: true
