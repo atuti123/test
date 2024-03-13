@@ -110,5 +110,6 @@ affinity: {}
 envVariables:
   API_URL: "www.google.com"
 
+# Tool to refresh pods when configmap\secrets used by pod is updated
 reloader:
   enabled: true
