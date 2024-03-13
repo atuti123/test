@@ -2,14 +2,22 @@ from fastapi import FastAPI, HTTPException, Response
 from fastapi.responses import JSONResponse
 import os
 import requests
+from urllib.parse import urlparse
 
-app = FastAPI()
+def parse_url(url):
+    parsed_url = urlparse(url)
+    if not parsed_url.scheme:
+        url = 'http://' + url
+    return url
 
 # Get the URL from the environment variable
 API_URL = os.getenv("API_URL")
+API_URL = parse_url(API_URL)
 
 if API_URL is None:
     raise ValueError("API_URL environment variable is not set")
+
+app = FastAPI()
 
 @app.get("/")
 def get_api_response():
