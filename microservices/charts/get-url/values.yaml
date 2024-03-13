@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: ttl.sh/ms-multi
+  repository: ttl.sh/ms
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: v3
