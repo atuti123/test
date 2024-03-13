@@ -36,8 +36,29 @@ jobs:
           tags: ttl.sh/ms:${{ github.ref_name }}.${{ github.sha }}
       - id: imageTag
         run: echo "tag=ttl.sh/ms:${{ github.ref_name }}.${{ github.sha }}" >> "$GITHUB_OUTPUT"
+
+  release:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Configure Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+      - name: Install Helm
+        uses: azure/setup-helm@v3
+      - name: Run chart-releaser
+        uses: helm/chart-releaser-action@v1.6.0
+        env:
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
       
   deploy:
+    if: ${{ false }}
     name: Deploy to EC2
     runs-on: ubuntu-latest
     needs: [build]
@@ -51,6 +72,8 @@ jobs:
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
+              cd /home/ubuntu/git/moon
+              git pull
               chart_path=/home/ubuntu/git/test/microservices/charts/get-url
               helm upgrade -i ${{ github.event.inputs.msName }} $chart_path \
               -f $chart_path/configs/${{ github.event.inputs.msName }}.yaml \
