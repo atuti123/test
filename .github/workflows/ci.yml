@@ -38,6 +38,7 @@ jobs:
         run: echo "tag=ttl.sh/ms:${{ github.ref_name }}.${{ github.sha }}" >> "$GITHUB_OUTPUT"
 
   release:
+    needs: build
     permissions:
       contents: write
     runs-on: ubuntu-latest
