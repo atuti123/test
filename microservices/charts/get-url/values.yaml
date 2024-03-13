@@ -107,5 +107,5 @@ affinity: {}
 
 # URL for the app to consumed. Required for the app to run
 # assuming http be default if scheme not specified
-envVariables: {}
+envVariables:
   API_URL: "www.google.com"
