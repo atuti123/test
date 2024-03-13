@@ -3,7 +3,7 @@ name: ci
 on:
   workflow_dispatch:
     inputs:
-      ms_name:
+      msName:
         description: 'Name of microservice to deploy'
         required: true
         type: string
@@ -13,6 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       
+      - name: variable
+        run: |
+           echo ${{ github.event.inputs.msName }}"
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up QEMU
