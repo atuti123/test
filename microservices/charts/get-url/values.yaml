@@ -107,4 +107,4 @@ tolerations: []
 affinity: {}
 
 envVariables:
-  API_URL: "http://api/odd"
+  API_URL: "http://api-numbers/odd"
