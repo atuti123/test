@@ -25,4 +25,4 @@ jobs:
           context: microservices/
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ttl.sh/ms:${{ github.head_ref }}.${{ github.sha }}
+          tags: ttl.sh/ms:${{ github.ref_name }}.${{ github.sha }}
