@@ -55,5 +55,5 @@ jobs:
               helm upgrade -i ${{ github.event.inputs.msName }} $chart_path \
               -f $chart_path
               --set image.tag=${{needs.build.outputs.imageTag}} \
-              --set fullnameOverride=${{ github.event.inputs.msName }}"          
+              --set fullnameOverride=${{ github.event.inputs.msName }}       
               '
