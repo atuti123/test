@@ -37,23 +37,8 @@ jobs:
       - id: imageTag
         run: echo "tag=${{ github.ref_name }}.${{ github.sha }}" >> "$GITHUB_OUTPUT"
 
-  paths-filter:
-    runs-on: ubuntu-latest
-    outputs:
-      output1: ${{ steps.filter.outputs.charts }}
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-    - uses: dorny/paths-filter@v2
-      id: filter
-      with:
-        filters: |
-          charts:
-            - '/microservices/charts/**'
-  
   release:
-    needs: [build, paths-filter]
-    if: needs.paths-filter.outputs.output1 == 'true'
+    needs: build
     permissions:
       contents: write
     runs-on: ubuntu-latest
