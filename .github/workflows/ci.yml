@@ -9,7 +9,7 @@ on:
         description: microservice to deploy
         options: 
         - odd
-        - even~
+        - even
 
 jobs:
   build:
