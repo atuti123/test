@@ -99,7 +99,7 @@ jobs:
         USER_NAME: ${{secrets.USER_NAME}}
       run: |
         echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-        scp -i private_key tests.sh ${USER_NAME}@${HOSTNAME}:/etc/tests.sh
+        scp -o StrictHostKeyChecking=no -i private_key tests.sh ${USER_NAME}@${HOSTNAME}:/etc/tests.sh
     - name: Run tests
       env:
           PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
