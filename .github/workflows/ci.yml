@@ -5,6 +5,7 @@ on:
     inputs:
       msName:
         type: choice
+        required: true
         description: microservice to deploy
         options: 
         - odd
