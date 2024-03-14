@@ -3,6 +3,16 @@ entries:
   get-url:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-03-14T08:19:58.039478883Z"
+    description: A Helm chart for Kubernetes
+    digest: 13eb58b340a56c5e731b7a906d701b4596513933af7bd537c04d581fbcb28836
+    name: get-url
+    type: application
+    urls:
+    - https://github.com/royta1/test/releases/download/get-url-0.10.0/get-url-0.10.0.tgz
+    version: 0.10.0
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-03-14T07:50:02.576896973Z"
     description: A Helm chart for Kubernetes
     digest: b986a81f04e367634b56c0c05441b1cf8e178ca8be49e05c39b435eb1ccd646a
@@ -91,4 +101,4 @@ entries:
     urls:
     - https://github.com/royta1/test/releases/download/get-url-0.1.0/get-url-0.1.0.tgz
     version: 0.1.0
-generated: "2024-03-14T07:50:02.576937729Z"
+generated: "2024-03-14T08:19:58.039522415Z"
