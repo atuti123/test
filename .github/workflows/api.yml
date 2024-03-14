@@ -27,8 +27,6 @@ jobs:
         run: echo "repo=$DOCKER_REPO" >> "$GITHUB_OUTPUT"
       - name: Build and push
         uses: docker/build-push-action@v5
-        env:
-          DOCKER_REPO: "ttl.sh/api"
         with:
           context: microservices/
           platforms: linux/amd64,linux/arm64
